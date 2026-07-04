@@ -1,17 +1,10 @@
 import { Routes } from '@angular/router';
 import { roleGuard } from './core/guards/role.guard';
-import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
     children: [
-      {
-        path: '',
-        loadComponent: () =>
-          import('./pages/home/home.component').then((m) => m.HomeComponent),
-      },
       {
         path: '',
         loadComponent: () =>
