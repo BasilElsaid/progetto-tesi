@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-layout',
-  imports: [
-    RouterModule,
-    CommonModule,
-  ],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css',
+  selector: 'app-navbar',
+  imports: [RouterModule, CommonModule],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css',
 })
-export class LayoutComponent {
+export class NavbarComponent {
   open = false;
 
   constructor(
@@ -21,7 +18,7 @@ export class LayoutComponent {
   ) {}
 
   get isAdmin() {
-  return this.authService.role;
+    return this.authService.role;
   }
 
   get isAuth() {

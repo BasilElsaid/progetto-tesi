@@ -1,13 +1,17 @@
 import { Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
 import { roleGuard } from './core/guards/role.guard';
-import { AdminComponent } from './pages/adminPages/admin/admin.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: HomeComponent,
     children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./pages/home/home.component').then((m) => m.HomeComponent),
+      },
       {
         path: '',
         loadComponent: () =>

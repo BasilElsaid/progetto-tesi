@@ -1,0 +1,109 @@
+<nav>
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center">
+      <!-- LOGO -->
+      <div class="font-bold text-slate-900 text-lg">Job Matching</div>
+
+      <div class="flex-1"></div>
+
+      <!-- DESKTOP MENU -->
+      <div class="hidden md:flex items-center gap-2">
+        <a
+          routerLink="/"
+          class="text-slate-700 px-3 py-2 rounded hover:bg-slate-100"
+        >
+          Home
+        </a>
+
+        <a
+          routerLink="/jobs"
+          class="text-slate-700 px-3 py-2 rounded hover:bg-slate-100"
+        >
+          Annunci
+        </a>
+
+        <a
+          *ngIf="authService.isAuthenticated() && !authService.isAdmin()"
+          routerLink="/company/dashboard"
+          class="text-slate-700 px-3 py-2 rounded hover:bg-slate-100"
+        >
+          Dashboard
+        </a>
+
+        <a
+          *ngIf="!isAuth()"
+          routerLink="/auth/register"
+          class="text-slate-700 px-3 py-2 rounded hover:bg-slate-100"
+        >
+          Registrati
+        </a>
+
+        <a
+          *ngIf="isAdmin() === 'ADMIN'"
+          routerLink="/admin"
+          class="text-slate-700 px-3 py-2 rounded hover:bg-slate-100"
+        >
+          Admin
+        </a>
+
+        <a
+          *ngIf="!isAuth()"
+          routerLink="/auth/login"
+          class="border border-slate-300 px-4 py-2 rounded-lg hover:bg-slate-50"
+        >
+          Login
+        </a>
+
+        <button
+          *ngIf="isAuth()"
+          (click)="logout()"
+          class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+        >
+          Logout
+        </button>
+      </div>
+
+      <!-- MOBILE BUTTON -->
+      <button (click)="open = !open" class="md:hidden text-slate-700 text-xl">
+        ☰
+      </button>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div
+      *ngIf="open"
+      class="md:hidden border-t border-slate-100 px-6 py-4 space-y-2"
+    >
+      <a routerLink="/" class="block py-2">Home</a>
+      <a routerLink="/jobs" class="block py-2">Annunci</a>
+
+      <a
+        *ngIf="authService.isAuthenticated() && !authService.isAdmin()"
+        routerLink="/company/dashboard"
+        class="block py-2"
+      >
+        Dashboard
+      </a>
+
+      <a *ngIf="!isAuth()" routerLink="/auth/register" class="block py-2">
+        Registrati
+      </a>
+
+      <a *ngIf="isAdmin() === 'ADMIN'" routerLink="/admin" class="block py-2">
+        Admin
+      </a>
+
+      <a *ngIf="!isAuth()" routerLink="/auth/login" class="block py-2">
+        Login
+      </a>
+
+      <button
+        *ngIf="isAuth()"
+        (click)="logout()"
+        class="w-full text-left text-red-600 py-2"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
