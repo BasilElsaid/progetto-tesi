@@ -64,16 +64,6 @@ Sistema basato su architettura **client-server separata**.
 
 ---
 
-## Deployment
-
-Il progetto è disponibile online:
-
-- Frontend: https://job-matching-rc1u.vercel.app/
-
-Il frontend comunica con backend remoto e database MongoDB Atlas.
-
----
-
 ## Avvio in locale (Docker)
 
 ### Requisiti
